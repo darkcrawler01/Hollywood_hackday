@@ -22,6 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.hackathon.GraceSearchActivity"
+            android:label="@string/title_activity_grace_search" >
+        </activity>
     </application>
 
 </manifest>

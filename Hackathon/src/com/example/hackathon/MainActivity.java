@@ -164,6 +164,30 @@ public class MainActivity extends Activity implements RdioListener{
 				int status, Bundle extras) {  
 			// TODO Auto-generated method stub           
 		}  
-	}  
+	}
+	
+
+	/* Code to get GraceNote data	*/
+	
+	
+	//	static final int GRACENOTE_SEARCH_RETURN = 1;
+	//	final Context context = this;
+	
+	
+	//	Intent intent = new Intent(context, GraceSearchActivity.class);
+	//	startActivityForResult(intent, GRACENOTE_SEARCH_RETURN);
+
+	
+	/*protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+    	if(requestCode == GRACENOTE_SEARCH_RETURN && resultCode == RESULT_OK && data != null)
+    	{
+    		String albumArtist = data.getStringExtra("AlbumArtist");
+    		String albumTitle = data.getStringExtra("AlbumTitle");
+    		String trackTitle = data.getStringExtra("TrackTitle");
+    		
+    	}
+     }*/
+
 
 }
