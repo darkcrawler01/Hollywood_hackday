@@ -36,10 +36,16 @@
             android:name="com.example.hackathon.PlayActivity"
             android:label="@string/title_activity_play" >
         </activity>
+          <activity
+            android:name="com.example.hackathon.SwipeActivity"
+            android:label="Swipe" >
+        </activity>
         
         <activity
             android:name="com.example.hackathon.AssociatePlaylist"
             android:label="@string/title_activity_associate_playlist" >
+        </activity>
+        <activity
             android:name="com.example.hackathon.GraceSearchActivity"
             android:label="@string/title_activity_grace_search" >
         </activity>

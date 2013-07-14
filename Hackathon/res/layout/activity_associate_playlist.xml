@@ -43,20 +43,9 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-             />
-
-    </ScrollView>
-
-    <Button
-        android:id="@+id/button1"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/askCamera"
-        android:layout_alignBottom="@+id/askCamera"
-        android:layout_toRightOf="@+id/askCamera"
-        android:text="@string/camera_button" 
-        android:onClick="doCameraActivity" />
+            >
+        </LinearLayout>
+       </ScrollView>
 
     <TextView
         android:id="@+id/askCamera"
@@ -64,8 +53,29 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/scrollView1"
         android:layout_below="@+id/scrollView1"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="14dp"
         android:text="@string/ask_camera" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/scrollView1"
+        android:background="@drawable/click"
+        android:onClick="doCameraActivity"
+        android:src="@drawable/click3" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_below="@+id/askCamera"
+        android:layout_centerHorizontal="true"
+        android:maxHeight="50dp"
+        android:maxWidth="50dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_launcher" />
 
     <Button
         android:id="@+id/button2"
@@ -73,8 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="23dp"
-        android:text="Done!" 
-        android:onClick="uploadToDatabase"/>
+        android:onClick="uploadToDatabase"
+        android:text="Done!" />
 
 </RelativeLayout>

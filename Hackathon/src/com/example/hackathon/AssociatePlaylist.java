@@ -18,9 +18,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class AssociatePlaylist extends Activity {
@@ -29,6 +33,8 @@ public class AssociatePlaylist extends Activity {
 	public static final int MEDIA_TYPE_VIDEO = 2;
 	private static final int CAPTURE_IMAGE_ACTIVITY_REQ = 1337;
 	private Uri fileUri = null;
+	private String selectedPlaylistName = "none";
+	private String selectedPlaylistId = "none";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,22 +48,46 @@ public class AssociatePlaylist extends Activity {
 
 		// Create a LinearLayout element
 		LinearLayout ll = (LinearLayout)v.findViewById(R.id.scroll_linearView);
-
+		
+		 final RadioButton[] rb = new RadioButton[5];
+		 RadioGroup rg = new RadioGroup(this); //create the RadioGroup
+		 rg.setOrientation(RadioGroup.VERTICAL);//or RadioGroup.VERTICAL
+		
 		for(int i=0; i<5; i++)
 		{
 			// Add text
-			TextView tv = new TextView(this);
+			/*TextView tv = new TextView(this);
 			tv.setText("my playlist "+i);
-			ll.addView(tv);
+			
+			tv.setOnClickListener(new OnClickListener() {
+
+			    @Override
+			    public void onClick(View v) {
+			        // do whatever stuff you wanna do here
+			    	v.setBackgroundColor(Color.parseColor("#5E4E54"));
+			    	selectedPlaylistName = (String)((TextView)v).getText();
+			    	selectedPlaylistId = "1";
+			    }
+			});
+			
+			ll.addView(tv);*/
+			   
+			        rb[i]  = new RadioButton(this);
+			        rg.addView(rb[i]); //the RadioButtons are added to the radioGroup instead of the layout
+			        rb[i].setText("my playlist"+i);
+			        
+			        rb[i].setOnCheckedChangeListener(new OnCheckedChangeListener(){
+			            @Override
+			            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+			                if (isChecked){
+			                	selectedPlaylistName = (String)(buttonView.getText());
+			                	selectedPlaylistId = "playlist"+selectedPlaylistName;
+			                }
+			            }   
+			        });
 		}
-
-		// Add the LinearLayout element to the ScrollView
-		//sv.addView(ll);
-
-		// Display the view
+		ll.addView(rg);//you add the whole RadioGroup to the layout
 		setContentView(v);
-
-		//setContentView(R.layout.activity_associate_playlist);
 	}
 
 	@Override
@@ -77,6 +107,7 @@ public class AssociatePlaylist extends Activity {
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		ImageView imageView = (ImageView)findViewById(R.id.imageView1);
 		if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQ) {
 			if (resultCode == RESULT_OK) {
 				Toast.makeText(this, "Image saved successfully", 
@@ -84,7 +115,7 @@ public class AssociatePlaylist extends Activity {
 				Bitmap bitmap;
 				try {
 					bitmap = MediaStore.Images.Media.getBitmap( getApplicationContext().getContentResolver(),  fileUri);
-					//imageView.setImageBitmap(bitmap);
+					imageView.setImageBitmap(bitmap);
 				} catch (FileNotFoundException e) {
 					//Log.d(DEBUG_TAG, "Bitmap image view display failed.", e);
 				} catch (IOException e) {
@@ -145,6 +176,7 @@ public class AssociatePlaylist extends Activity {
 	public void uploadToDatabase(View v)
 	{
 		/* TODO */
+		System.out.println("Selected: "+selectedPlaylistName+" "+selectedPlaylistId);
 	}
-
+	
 }

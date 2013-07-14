@@ -71,6 +71,15 @@ public class MainActivity extends Activity implements RdioListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		LocationListener locationListener = new GeoLocationListener();
+		locationManager.requestLocationUpdates(LocationManager  
+				.GPS_PROVIDER, 500, 10, locationListener);  
+		Log.e(TAG,"got location");
+		//Parse Initialize
+		Parse.initialize(this, "kAhhIhniDBWzaIvliYFNSSDiCdgpItcuPosPBsB5", "Qd0kjJN6qjbk9QM5Ktp16NUafvEkqLbNRd8EuvOC"); 
+		ParseAnalytics.trackAppOpened(getIntent());
 
 		ImageView i = (ImageView)findViewById(R.id.rdio);
 		i.setOnClickListener(new OnClickListener() {
@@ -270,7 +279,7 @@ public class MainActivity extends Activity implements RdioListener{
 			}
 			dismissDialog(DIALOG_GETTING_LOCATION);
 			
-			Intent newintent = new Intent(this, PlayActivity.class);
+			Intent newintent = new Intent(this, SwipeActivity.class);
 			newintent.putExtra("playlistKey", playlistID);
 			startActivity(newintent);
 			
@@ -390,14 +399,14 @@ public class MainActivity extends Activity implements RdioListener{
 				rdio.setTokenAndSecret(data);	
 				showDialog(DIALOG_GETTING_LOCATION);
 				//Location Manager
-				LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-				LocationListener locationListener = new GeoLocationListener();
-				locationManager.requestLocationUpdates(LocationManager  
-						.GPS_PROVIDER, 500, 10, locationListener);  
-				Log.e(TAG,"got location");
-				//Parse Initialize
-				Parse.initialize(this, "kAhhIhniDBWzaIvliYFNSSDiCdgpItcuPosPBsB5", "Qd0kjJN6qjbk9QM5Ktp16NUafvEkqLbNRd8EuvOC"); 
-				ParseAnalytics.trackAppOpened(getIntent());
+//				LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+//				LocationListener locationListener = new GeoLocationListener();
+//				locationManager.requestLocationUpdates(LocationManager  
+//						.GPS_PROVIDER, 500, 10, locationListener);  
+//				Log.e(TAG,"got location");
+//				//Parse Initialize
+//				Parse.initialize(this, "kAhhIhniDBWzaIvliYFNSSDiCdgpItcuPosPBsB5", "Qd0kjJN6qjbk9QM5Ktp16NUafvEkqLbNRd8EuvOC"); 
+//				ParseAnalytics.trackAppOpened(getIntent());
 				String playlistID = "";
 				try {
 					playlistID = (String)ParseService.getPlaylist(34.074847, -118.398191).get(0).get(ParseConstants.PLAYLIST_ID);
