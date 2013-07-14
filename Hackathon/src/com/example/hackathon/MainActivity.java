@@ -3,12 +3,18 @@ package com.example.hackathon;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
 import com.rdio.android.api.Rdio;
 import com.rdio.android.api.RdioListener;
 
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -36,6 +42,10 @@ public class MainActivity extends Activity implements RdioListener{
 
 	private static String collectionKey = null;
 
+	//Geo-Coordinates
+	private double latitude;
+	private double longitude;
+
 	// Our model for the metadata for a track that we care about
 	private class Track {
 		public String key;
@@ -52,11 +62,11 @@ public class MainActivity extends Activity implements RdioListener{
 			albumArt = uri;
 		}
 	}
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+
 		trackQueue = new LinkedList<Track>();
 
 		// Initialise our Rdio object.  If we have cached access credentials, then use them - otherwise
@@ -80,43 +90,80 @@ public class MainActivity extends Activity implements RdioListener{
 			rdio = new Rdio(appKey, appSecret, accessToken, accessTokenSecret, this, this);	
 		}
 
+		//Location Manager
+		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		LocationListener locationListener = new GeoLocationListener();
+		locationManager.requestLocationUpdates(LocationManager  
+				.GPS_PROVIDER, 500, 10, locationListener);  
 
-    }
+		//Parse Initialize
+		Parse.initialize(this, "kAhhIhniDBWzaIvliYFNSSDiCdgpItcuPosPBsB5", "Qd0kjJN6qjbk9QM5Ktp16NUafvEkqLbNRd8EuvOC"); 
+		ParseAnalytics.trackAppOpened(getIntent());
+
+	}
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
 
 
 	@Override
 	public void onRdioAuthorised(String arg0, String arg1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
 	@Override
 	public void onRdioReady() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
 	@Override
 	public void onRdioUserAppApprovalNeeded(Intent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 
 	@Override
 	public void onRdioUserPlayingElsewhere() {
 		// TODO Auto-generated method stub
-		
+
 	}
-    
+
+	/**
+	 * Geo Location listener to get the current coordinates
+	 */
+	private class GeoLocationListener implements LocationListener {  
+
+		@Override  
+		public void onLocationChanged(Location loc) {  
+			longitude = loc.getLongitude();    
+			latitude = loc.getLatitude();  
+		}  
+
+		@Override  
+		public void onProviderDisabled(String provider) {  
+			// TODO Auto-generated method stub           
+		}  
+
+		@Override  
+		public void onProviderEnabled(String provider) {  
+			// TODO Auto-generated method stub           
+		}  
+
+		@Override  
+		public void onStatusChanged(String provider,   
+				int status, Bundle extras) {  
+			// TODO Auto-generated method stub           
+		}  
+	}  
+
 }
