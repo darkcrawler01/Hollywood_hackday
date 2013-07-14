@@ -4,15 +4,17 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import com.rdio.android.api.Rdio;
+import com.rdio.android.api.RdioListener;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.Menu;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements RdioListener{
 
 	private Queue<Track> trackQueue;
 	private static final String TAG = "RdioAPIExample";
@@ -75,7 +77,7 @@ public class MainActivity extends Activity {
 			}
 
 			// Initialise our API object
-			//rdio = new Rdio(appKey, appSecret, accessToken, accessTokenSecret, this, this);	
+			rdio = new Rdio(appKey, appSecret, accessToken, accessTokenSecret, this, this);	
 		}
 
 
@@ -88,5 +90,33 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
+
+	@Override
+	public void onRdioAuthorised(String arg0, String arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onRdioReady() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onRdioUserAppApprovalNeeded(Intent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void onRdioUserPlayingElsewhere() {
+		// TODO Auto-generated method stub
+		
+	}
     
 }
