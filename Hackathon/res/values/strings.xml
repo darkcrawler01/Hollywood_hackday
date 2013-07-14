@@ -3,10 +3,12 @@
 
     <string name="app_name">Hackathon</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="hello_user">Hello, :username:!</string>
     <string name="choose_playlist">Choose the playlist</string>
     <string name="choose_name">Where are you, exactly?</string>
     <string name="title_activity_associate_playlist">AssociatePlaylist</string>
-
+    <string name="title_activity_grace_search">GraceSearchActivity</string>
+    <string name="gracenote_search">Gracenote Search</string>
+    <string name="gracenote_text">Play the song to be searched for</string>
+   <string name="gracenote_goto">Go to Gracenote Song Search</string>
 </resources>
