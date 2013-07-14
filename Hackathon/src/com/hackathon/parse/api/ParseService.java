@@ -77,7 +77,7 @@ public class ParseService {
 		});
 	}
 
-	public List<Map<String, Object>> getPlaylist(double latitude, double longitude) throws ParseException{
+	public static List<Map<String, Object>> getPlaylist(double latitude, double longitude) throws ParseException{
 		ParseQuery<ParseObject> query = ParseQuery.getQuery(PLAYLIST_OBJECT_NAME);
 		final List<Map<String, Object>> playlistsMapList = new ArrayList<Map<String, Object>>();
 		query.whereWithinMiles(GEOLOCATION, new ParseGeoPoint(latitude, longitude), 1);
