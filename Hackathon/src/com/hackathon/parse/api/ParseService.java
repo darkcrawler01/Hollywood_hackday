@@ -20,7 +20,7 @@ import com.parse.ParseQuery;
 
 public class ParseService {
 
-	public String createPlaylist(double latitude, double longitude,
+	public static String createPlaylist(double latitude, double longitude,
 			String playlistID, String playlistName, byte[] fileBytes){
 		//Save the file
 		ParseFile parseFile = null;
@@ -42,7 +42,7 @@ public class ParseService {
 		return playlist.getObjectId();
 	}
 
-	public boolean updatePlaylist(String objectId, final String newPlaylistName, final byte[] fileBytes) throws ParseException{
+	public static boolean updatePlaylist(String objectId, final String newPlaylistName, final byte[] fileBytes) throws ParseException{
 		ParseQuery<ParseObject> query = ParseQuery.getQuery(PLAYLIST_OBJECT_NAME);
 		query.getInBackground(objectId, new GetCallback<ParseObject>() {
 
@@ -66,7 +66,7 @@ public class ParseService {
 		return true;
 	}
 
-	public void deletePlaylist(String objectId){
+	public static void deletePlaylist(String objectId){
 		ParseQuery<ParseObject> query = ParseQuery.getQuery(PLAYLIST_OBJECT_NAME);
 		query.getInBackground(objectId, new GetCallback<ParseObject>() {
 			public void done(ParseObject object, ParseException e) {
