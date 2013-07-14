@@ -59,7 +59,7 @@ public class PlayActivity extends Activity {
 		playlistKey = parentIntent.getStringExtra("playlistKey");
 		
 		trackQueue = new LinkedList<Track>();
-		
+		next(true);
 
 		ImageView i = (ImageView)findViewById(R.id.next);
 		i.setOnClickListener(new OnClickListener() {
@@ -107,7 +107,7 @@ public class PlayActivity extends Activity {
 		showDialog(DIALOG_GETTING_COLLECTION);
 		List<NameValuePair> args = new LinkedList<NameValuePair>();
 		args.add(new BasicNameValuePair("keys", playlistKey));
-		args.add(new BasicNameValuePair("count", "50"));
+ 		args.add(new BasicNameValuePair("extras", "tracks"));
 		rdio.apiCall("get", args, new RdioApiCallback() {
 			
 			@Override
@@ -154,7 +154,7 @@ public class PlayActivity extends Activity {
 		}
 
 		final Track track = trackQueue.poll();
-		if (trackQueue.size() < 3) {
+		if (trackQueue.size() < 1) {
 			//Log.i(TAG, "Track queue depleted, loading more tracks");
 			LoadMoreTracks();
 		}
