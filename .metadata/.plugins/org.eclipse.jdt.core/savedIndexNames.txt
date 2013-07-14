@@ -1,4 +1,0 @@
-INDEX VERSION 1.126+F:\Projects\Hackathon\.metadata\.plugins\org.eclipse.jdt.core
-2942332658.index
-667521311.index
-4016366952.index
