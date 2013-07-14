@@ -29,13 +29,14 @@ public class GraceSearchActivity extends Activity {
 
 		config = GNConfig.init("10353664-3657B1006A5B4E9DC358F1C2F02E5C15", this.getApplicationContext());
 
-		gn_button = (Button) findViewById(R.id.gn_button);
+		gn_button = (Button) findViewById(R.id.mic_button);
 
 		gn_button.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-
+				
+				gn_button.setBackgroundResource(R.drawable.microphone_red);
 				SearchFromMic micInput = new SearchFromMic();
 				micInput.searchSong();
 

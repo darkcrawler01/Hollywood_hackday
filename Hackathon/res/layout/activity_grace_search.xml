@@ -26,5 +26,13 @@
         android:layout_centerVertical="true"
         android:text= "@string/gracenote_search" />
 
+    <ImageButton
+        android:id="@+id/mic_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gn_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
+        android:src="@drawable/microphone_green" />
     
 </RelativeLayout>
