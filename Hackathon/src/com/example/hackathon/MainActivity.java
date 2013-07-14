@@ -99,7 +99,9 @@ public class MainActivity extends Activity implements RdioListener{
 		//Parse Initialize
 		Parse.initialize(this, "kAhhIhniDBWzaIvliYFNSSDiCdgpItcuPosPBsB5", "Qd0kjJN6qjbk9QM5Ktp16NUafvEkqLbNRd8EuvOC"); 
 		ParseAnalytics.trackAppOpened(getIntent());
-
+		
+		Intent newIntent = new Intent(this, AssociatePlaylist.class);
+		startActivity(newIntent);
 	}
 
 
