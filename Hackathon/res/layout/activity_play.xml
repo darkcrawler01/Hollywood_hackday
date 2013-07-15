@@ -22,5 +22,12 @@
 		<ImageView android:id="@+id/playPause" android:src="@drawable/play" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
 		<ImageView android:id="@+id/next" android:src="@drawable/next" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
    	</LinearLayout>
-   	
+   	<Button 
+   	    android:id="@+id/button_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="startAddActivity"
+        android:text="@string/add_track_text" />
 </RelativeLayout>

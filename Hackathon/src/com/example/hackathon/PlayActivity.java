@@ -249,5 +249,11 @@ public class PlayActivity extends Activity {
 			playPause.setImageResource(R.drawable.play);
 		}
 	}
+	
+	public void startAddActivity(View v)
+	{
+		Intent newIntent = new Intent(this, AddTrackActivity.class);
+		startActivity(newIntent);
+	}
 
 }

@@ -55,23 +55,6 @@ public class AssociatePlaylist extends Activity {
 		
 		for(int i=0; i<5; i++)
 		{
-			// Add text
-			/*TextView tv = new TextView(this);
-			tv.setText("my playlist "+i);
-			
-			tv.setOnClickListener(new OnClickListener() {
-
-			    @Override
-			    public void onClick(View v) {
-			        // do whatever stuff you wanna do here
-			    	v.setBackgroundColor(Color.parseColor("#5E4E54"));
-			    	selectedPlaylistName = (String)((TextView)v).getText();
-			    	selectedPlaylistId = "1";
-			    }
-			});
-			
-			ll.addView(tv);*/
-			   
 			        rb[i]  = new RadioButton(this);
 			        rg.addView(rb[i]); //the RadioButtons are added to the radioGroup instead of the layout
 			        rb[i].setText("my playlist"+i);
