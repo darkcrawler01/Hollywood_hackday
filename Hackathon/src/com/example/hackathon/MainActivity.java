@@ -263,7 +263,7 @@ public class MainActivity extends Activity implements RdioListener{
 			ParseAnalytics.trackAppOpened(getIntent());
 			String playlistID = "";
 			try {
-				playlistID = (String)ParseService.getPlaylist(34.074847, -118.398191).get(0).get(ParseConstants.PLAYLIST_ID);
+				playlistID = (String)ParseService.getPlaylist(latitude, longitude).get(0).get(ParseConstants.PLAYLIST_ID);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -400,7 +400,8 @@ public class MainActivity extends Activity implements RdioListener{
 				ParseAnalytics.trackAppOpened(getIntent());
 				String playlistID = "";
 				try {
-					playlistID = (String)ParseService.getPlaylist(34.074847, -118.398191).get(0).get(ParseConstants.PLAYLIST_ID);
+				
+					playlistID = (String)ParseService.getPlaylist(latitude, longitude).get(0).get(ParseConstants.PLAYLIST_ID);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
